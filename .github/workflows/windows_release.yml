@@ -19,6 +19,7 @@ defaults:
 env:
   SOURCE_DIR:   ${{ github.workspace }}
   QT_VERSION:   5.15.2
+  ARTIFACT:     qt-planets-build.zip
 
 jobs:
   build:
@@ -69,3 +70,15 @@ jobs:
         run:  |
               qmake -r ${{ env.SOURCE_DIR }}\planets-qml.pro
               ${{ runner.temp }}\jom\jom -j2
+              
+      - name: Zip build
+        working-directory: ${{ runner.temp }}
+        run:  |
+              7z a qt-planets-build.zip ${{ runner.temp }}\build\* -r
+              
+      - name: Save build artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: ${{ env.ARTIFACT }}
+          path: ${{ runner.temp }}\${{ env.ARTIFACT }}
+              
