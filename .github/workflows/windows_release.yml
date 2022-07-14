@@ -57,7 +57,7 @@ jobs:
               7z x jom.zip -ojom
               
       - name: Create build directory
-        run:  mkdir ${{ runner.temp }}\shadow_build_dir
+        run:  mkdir ${{ runner.temp }}\build
 
       - name: Set up Visual Studio shell
         uses: egor-tensin/vs-shell@v2
@@ -65,7 +65,7 @@ jobs:
           arch: x64
 
       - name: Build
-        working-directory: ${{ runner.temp }}\shadow_build_dir
+        working-directory: ${{ runner.temp }}\build
         run:  |
-              qmake -r ${{ env.SOURCE_DIR }}\planets-qml.pro CONFIG+=installer CONFIG+=${{ env. BUILD_TYPE }}
+              qmake -r ${{ env.SOURCE_DIR }}\planets-qml.pro
               ${{ runner.temp }}\jom\jom -j2
