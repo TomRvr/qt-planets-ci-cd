@@ -114,7 +114,7 @@ jobs:
           dir:          ${{ runner.temp }}
           modules:      qtcharts qt3d
           setup-python: false         
-          
+
       - name: Create build directory
         run:  mkdir ${{ runner.temp }}\build   
 
@@ -126,7 +126,7 @@ jobs:
       - name: Test
         working-directory: ${{ runner.temp }}\build
         run:  |
-              qmake -project "QT += testlib" ${{ env.SOURCE_DIR }}\tests
+              qmake -project "QT += testlib" ${{ env.SOURCE_DIR }}\planets-qml.pro
               qmake
               make -o test-results.txt
               more test-results.txt
