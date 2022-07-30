@@ -14,8 +14,7 @@ HEADERS += \
 
 SOURCES += \
     main.cpp \
-    networkcontroller.cpp \
-    tests/testQString.cpp
+    networkcontroller.cpp
 
 OTHER_FILES += \
     *.qml \
