@@ -126,7 +126,6 @@ jobs:
       - name: Test
         working-directory: ${{ runner.temp }}\build
         run:  |
-              qmake -project "QT += testlib" ${{ env.SOURCE_DIR }}\planets-qml.pro
-              qmake
+              qmake -r ${{ env.SOURCE_DIR }}\planets-qml.pro
               make -o test-results.txt
               more test-results.txt
