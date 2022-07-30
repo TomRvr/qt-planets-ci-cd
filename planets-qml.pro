@@ -4,7 +4,8 @@ QT += qml quick \
     concurrent \
     3dcore 3drender 3dinput 3dextras \
     3dquick 3dquickrender 3dquickinput 3dquickextras \
-    network
+    network \
+    testlib
 
 CONFIG += resources_big c++11
 
@@ -13,7 +14,8 @@ HEADERS += \
 
 SOURCES += \
     main.cpp \
-    networkcontroller.cpp
+    networkcontroller.cpp \
+    tests/testQString.cpp
 
 OTHER_FILES += \
     *.qml \
