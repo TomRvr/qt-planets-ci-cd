@@ -128,5 +128,4 @@ jobs:
         run:  |
               qmake -project ${{ env.SOURCE_DIR }}\tests
               qmake
-              nmake -o test-results.txt
-              more test-results.txt
+              nmake
