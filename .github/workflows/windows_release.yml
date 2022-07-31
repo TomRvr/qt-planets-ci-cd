@@ -129,5 +129,5 @@ jobs:
               qmake -project "QT += testlib" ${{ env.SOURCE_DIR }}\tests
               qmake
               nmake
-              .\release\build.exe -txt test-result.txt
+              .\release\build.exe -txt > test-result.txt
               more test-result.txt
