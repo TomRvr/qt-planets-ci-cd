@@ -129,10 +129,16 @@ jobs:
               qmake -project "QT += testlib" ${{ env.SOURCE_DIR }}\tests
               qmake
               nmake
-              .\release\build.exe -txt > test-result.txt
+              cd release
+              windeployqt build.exe --pdb --release --compiler-runtime
+              copy C:\Windows\System32\concrt140.dll . 
+              copy C:\Windows\System32\vccorlib140.dll .
+              copy C:\Windows\System32\msvcp140.dll .
+              copy C:\Windows\System32\vcruntime140.dll .
+              .\build.exe -txt > test-result.txt
       
       - name: Save results
         uses: actions/upload-artifact@master
         with:
-          name: build.exe
-          path: ${{ runner.temp }}\build\release\build.exe
+          name: test-result.txt
+          path: ${{ runner.temp }}\build\release\test-result.txt
