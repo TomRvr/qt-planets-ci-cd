@@ -130,4 +130,9 @@ jobs:
               qmake
               nmake
               .\release\build.exe -txt > test-result.txt
-              more test-result.txt
+      
+      - name: Save results
+        uses: actions/upload-artifact@master
+        with:
+          name: test-result.txt
+          path: ${{ runner.temp }}\build\test-result.txt
