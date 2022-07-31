@@ -135,15 +135,10 @@ jobs:
               copy C:\Windows\System32\vccorlib140.dll .
               copy C:\Windows\System32\msvcp140.dll .
               copy C:\Windows\System32\vcruntime140.dll .
-              .\build.exe -txt > test-result.txt
-
-      - name: Zip build
-        working-directory: ${{ runner.temp }}
-        run:  |
-              7z a test-result.zip ${{ runner.temp }}\build\* -r
+              build.exe > test-result.txt
 
       - name: Save results
         uses: actions/upload-artifact@master
         with:
-          name: test-result.zip
-          path: ${{ runner.temp }}\test-result.zip
+          name: test-result
+          path: ${{ runner.temp }}\build\release\test-result.txt
