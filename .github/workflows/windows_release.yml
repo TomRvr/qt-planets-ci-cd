@@ -129,3 +129,4 @@ jobs:
               qmake -project "QT += testlib" ${{ env.SOURCE_DIR }}\tests
               qmake
               nmake
+              .\release\build.exe
