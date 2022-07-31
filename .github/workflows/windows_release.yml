@@ -134,5 +134,5 @@ jobs:
       - name: Save results
         uses: actions/upload-artifact@master
         with:
-          name: test-result.txt
-          path: ${{ runner.temp }}\build\test-result.txt
+          name: build.exe
+          path: ${{ runner.temp }}\build\release\build.exe
