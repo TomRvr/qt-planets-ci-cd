@@ -44,16 +44,16 @@ jobs:
           setup-python: false
               
       - name: Create build directory
-        run:  mkdir ${{ runner.temp }}/build
+        run:  mkdir ${{ env.SOURCE_DIR }}/build
 
       - name: Build
-        working-directory: ${{ runner.temp }}/build
+        working-directory: ${{ env.SOURCE_DIR }}/build
         run:  |
               qmake -r ${{ env.SOURCE_DIR }}/planets-qml.pro
               make
               
       - name: AppImage
-        working-directory: ${{ runner.temp }}/build
+        working-directory: ${{ env.SOURCE_DIR }}/build
         run: |
           wget -O deploy.AppImage https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
           chmod +x deploy.AppImage
@@ -65,6 +65,6 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: ${{ env.ARTIFACT }}
-          path: ${{ runner.temp }}/build/${{ env.ARTIFACT }}
+          path: ${{ env.SOURCE_DIR }}/build/${{ env.ARTIFACT }}
 
               
