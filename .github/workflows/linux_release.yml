@@ -53,8 +53,8 @@ jobs:
               make
               
       - name: AppImage
+        working-directory: ${{ runner.temp }}/build
         run: |
-          cd build
           wget -O deploy.AppImage https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
           chmod +x deploy.AppImage
           export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${{ github.workspace }}/Qt/5.15.2/gcc_64/lib/
