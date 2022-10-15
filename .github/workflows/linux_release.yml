@@ -58,16 +58,7 @@ jobs:
           wget -O deploy.AppImage https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
           chmod +x deploy.AppImage
           export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${{ github.workspace }}/Qt/5.15.2/gcc_64/lib/
-          touch planets-qml.desktop
-          echo "[Desktop Entry]" >> planets-qml.desktop
-          echo "Type=Application" >> planets-qml.desktop
-          echo "Name=Qt Planets App" >> planets-qml.desktop
-          echo "Comment=Qt Planets App CI-CD" >> planets-qml.desktop
-          echo "Exec=planets-qml" >> planets-qml.desktop
-          echo "Icon=planets-qml" >> planets-qml.desktop
-          echo "Categories=Office;" >> planets-qml.desktop
-          cat planets-qml.desktop
-          ./deploy.AppImage planets-qml.desktop -appimage -no-translations -bundle-non-qt-libs
+          ./deploy.AppImage ${{ env.SOURCE_DIR }}/linux/planets-qml.desktop -appimage -no-translations -bundle-non-qt-libs
           mv planets-qml*.AppImage ${{ env.ARTIFACT }}          
       
       - name: Linux artefact
