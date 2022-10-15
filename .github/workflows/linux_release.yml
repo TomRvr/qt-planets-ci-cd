@@ -60,7 +60,7 @@ jobs:
           export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${{ github.workspace }}/Qt/5.15.2/gcc_64/lib/
           cp ${{ env.SOURCE_DIR }}/linux/* .
           ./deploy.AppImage planets-qml.desktop -appimage -no-translations -bundle-non-qt-libs
-          mv planets-qml*.AppImage ${{ env.ARTIFACT }}          
+          mv Qt_planets_app*.AppImage ${{ env.ARTIFACT }}          
       
       - name: Linux artefact
         uses: actions/upload-artifact@v1
