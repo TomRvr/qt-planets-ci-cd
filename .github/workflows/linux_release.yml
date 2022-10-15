@@ -58,8 +58,8 @@ jobs:
           wget -O deploy.AppImage https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
           chmod +x deploy.AppImage
           export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${{ github.workspace }}/Qt/5.15.2/gcc_64/lib/
-          ./deploy.AppImage Program -appimage -no-translations -bundle-non-qt-libs
-          mv Program*.AppImage ${{ env.ARTIFACT }}          
+          ./deploy.AppImage planets-qml -appimage -no-translations -bundle-non-qt-libs
+          mv planets-qml*.AppImage ${{ env.ARTIFACT }}          
       
       - name: Linux artefact
         uses: actions/upload-artifact@v1
