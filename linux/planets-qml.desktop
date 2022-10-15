@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Qt Planets App
-Comment=Qt Planets App CI-CD
-Exec=planets-qml
-Icon=planets-qml-icon
-Categories=Office;
