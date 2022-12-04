@@ -49,7 +49,7 @@ jobs:
         working-directory: ${{ env.SOURCE_DIR }}/build
         run:  |
               qmake -r ${{ env.SOURCE_DIR }}/planets-qml.pro
-              make apk 
+              make aab 
       
       - name: Android artefact
         uses: actions/upload-artifact@v1
