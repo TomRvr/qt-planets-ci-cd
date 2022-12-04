@@ -1,0 +1,61 @@
+name: Andoid Release
+
+on:
+  push:
+    branches:
+      - 'master'
+      - 'continuous-integration'
+      - 'cross-platform'
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+    - 'master'
+    - 'continuous-integration'
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  SOURCE_DIR:   ${{ github.workspace }}
+  QT_VERSION:   5.15.2
+  ARTIFACT:     planets-qml.apk
+
+jobs:
+  build:
+    runs-on:  ubuntu-18.04
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          version:      ${{ env.QT_VERSION }}
+          host:         linux
+          target:       android
+          arch:         android_armv7
+          dir:          ${{ runner.temp }}
+          modules:      qtcharts qt3d
+          setup-python: false
+              
+      - name: Create build directory
+        run:  mkdir ${{ env.SOURCE_DIR }}/build
+
+      - name: Build
+        working-directory: ${{ env.SOURCE_DIR }}/build
+        run:  |
+              qmake -r ${{ env.SOURCE_DIR }}/planets-qml.pro
+              make  
+      
+      - name: Android artefact
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ env.ARTIFACT }}
+          path: ${{ env.SOURCE_DIR }}/build/${{ env.ARTIFACT }}
+
+              
