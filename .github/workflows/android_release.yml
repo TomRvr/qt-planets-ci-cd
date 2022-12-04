@@ -38,7 +38,6 @@ jobs:
           version:      ${{ env.QT_VERSION }}
           host:         linux
           target:       android
-          arch:         android_armv7
           dir:          ${{ runner.temp }}
           modules:      qtcharts qt3d
           setup-python: false
