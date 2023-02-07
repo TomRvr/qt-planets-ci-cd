@@ -33,6 +33,7 @@ DISTFILES += \
     images/license.txt
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+ANDROID_ABIS = armeabi-v7a
 
 target.path = build/$$TARGET
 INSTALLS += target
