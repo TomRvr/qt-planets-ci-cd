@@ -35,6 +35,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
         with:
+          aqtversion: ==2.1.*
           version:      ${{ env.QT_VERSION }}
           host:         linux
           target:       android
