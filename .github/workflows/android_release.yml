@@ -33,7 +33,7 @@ jobs:
           submodules: recursive
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
           aqtversion: ==2.1.*
           version:      ${{ env.QT_VERSION }}
