@@ -55,7 +55,7 @@ jobs:
       - name: Deploy
         working-directory: ${{ env.SOURCE_DIR }}
         run: |
-              ${{ runner.temp }}/Qt/5.15.2/android/bin/androiddeployqt --input ${{ env.SOURCE_DIR }}/build/android-planets-qml-deployment-settings.json --output $ANDROID_BUILD_DIR
+              ${{ runner.temp }}/Qt/5.15.2/android/bin/androiddeployqt --input ${{ env.SOURCE_DIR }}/build/android-planets-qml-deployment-settings.json --output ${{ env.SOURCE_DIR }}/build/android-build
       
       - name: Android artefact
         uses: actions/upload-artifact@v1
