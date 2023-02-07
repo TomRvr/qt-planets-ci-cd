@@ -41,7 +41,6 @@ jobs:
           target:       android
           dir:          ${{ runner.temp }}
           modules:      qtcharts qt3d
-          setup-python: false
               
       - name: Create build directory
         run:  mkdir ${{ env.SOURCE_DIR }}/build
