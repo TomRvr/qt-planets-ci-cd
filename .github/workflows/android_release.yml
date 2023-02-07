@@ -19,7 +19,7 @@ defaults:
 
 env:
   SOURCE_DIR:   ${{ github.workspace }}
-  QT_VERSION:   5.15.8
+  QT_VERSION:   6.4.2
   ARTIFACT:     planets-qml.apk
 
 jobs:
