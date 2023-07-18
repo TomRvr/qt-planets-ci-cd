@@ -33,16 +33,15 @@ jobs:
           submodules: recursive
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v2
         with:
           version:      ${{ env.QT_VERSION }}
           aqtversion:   ==3.1.*
           host:         linux
           target:       desktop
           arch:         gcc_64
-          dir:          ${{ github.workspace }}/qt-planets-ci-cd
-          modules:      qtcharts
-          archives:     qt3d
+          dir:          ${{ runner.temp }}
+          modules:      qtcharts qt3d
           setup-python: false
               
       - name: Create build directory
