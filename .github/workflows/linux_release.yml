@@ -40,6 +40,7 @@ jobs:
           host:         linux
           target:       desktop
           arch:         gcc_64
+          dir:          ${{ github.workspace }}/qt-planets-ci-cd
           modules:      qtcharts
           archives:     qt3d
           setup-python: false
@@ -58,7 +59,7 @@ jobs:
         run: |
           wget -O deploy.AppImage https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
           chmod +x deploy.AppImage
-          export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${{ RUNNER_WORKSPACE }}/lib/
+          export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${{ github.workspace }}/Qt/5.15.2/gcc_64/lib/
           cp ${{ env.SOURCE_DIR }}/linux/* .
           ./deploy.AppImage planets-qml.desktop -appimage -no-translations -qmldir=${{ env.SOURCE_DIR }} -extra-plugins=renderers
           mv Qt_planets_app*.AppImage ${{ env.ARTIFACT }}          
