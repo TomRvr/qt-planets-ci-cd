@@ -24,16 +24,16 @@ env:
 
 jobs:
   build:
-    runs-on:  ubuntu-18.04
+    runs-on:  ubuntu-latest
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
           version:      ${{ env.QT_VERSION }}
           host:         linux
@@ -63,7 +63,7 @@ jobs:
           mv Qt_planets_app*.AppImage ${{ env.ARTIFACT }}          
       
       - name: Linux artefact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ env.ARTIFACT }}
           path: ${{ env.SOURCE_DIR }}/build/${{ env.ARTIFACT }}
