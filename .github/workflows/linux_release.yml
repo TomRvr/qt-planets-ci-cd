@@ -40,7 +40,7 @@ jobs:
           host:         linux
           target:       desktop
           arch:         gcc_64
-          dir:          ${{ runner.temp }}
+          dir:          ${{ github.workspace }}
           modules:      qtcharts
           archives:     qt3d
           setup-python: false
